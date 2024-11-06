@@ -1,0 +1,6 @@
+@use "@styles/vars/colors.scss" as c;
+
+.layout {
+  background: c.$bgDark;
+  color: c.$text;
+}
