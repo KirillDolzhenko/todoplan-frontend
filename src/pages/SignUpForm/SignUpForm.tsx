@@ -9,7 +9,6 @@ import clsx from "clsx";
 
 export default function ({ className, onClick }: IPropsForm) {
   return (
-    // <div className={classes.login}>
     <div className={clsx(classes.form, className)}>
       <HeadingForm>SignUp</HeadingForm>
       <div className={classes.form__content}>
@@ -22,6 +21,5 @@ export default function ({ className, onClick }: IPropsForm) {
         <ButtonForm>Register</ButtonForm>
       </div>
     </div>
-    // </div>
   );
 }

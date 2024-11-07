@@ -3,11 +3,21 @@
 import LogInForm from "@/pages/LogInForm/LogInForm";
 import SignUpForm from "@/pages/SignUpForm/SignUpForm";
 import classes from "./AuthBlock.module.scss";
-import { useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import clsx from "clsx";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function () {
-  let [register, setRegister] = useState<boolean>(false);
+  let router = useRouter();
+  let params = useSearchParams();
+
+  let [register, setRegister] = useState<boolean>(
+    params?.get("active") === "true"
+  );
+
+  useEffect(() => {
+    router.push(`auth?active=${register}`);
+  }, [register]);
 
   return (
     <div className={clsx(classes.block, register && classes.active)}>
