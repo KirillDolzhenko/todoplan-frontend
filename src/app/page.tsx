@@ -1,4 +1,4 @@
-import LogIn from "@/pages/LogIn/LogIn";
+import LogIn from "@/pages/LogInForm/LogInForm";
 import Image from "next/image";
 
 export default function Home() {

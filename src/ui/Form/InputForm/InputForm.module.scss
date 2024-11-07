@@ -1,0 +1,22 @@
+@use "@styles/vars/colors.scss" as c;
+
+.input {
+  width: 100%;
+
+  &:global(.MuiInput-root) {
+    font-size: 1rem;
+    &::after {
+      border-bottom: 2px solid c.$colorGreen;
+    }
+    &:hover:not(.Mui-disabled, .Mui-error)::before {
+      border-bottom: 2px solid c.$white;
+    }
+    &:not(.Mui-disabled, .Mui-error)::before {
+      border-bottom: 1px solid c.$white;
+    }
+  }
+
+  & :global(.MuiInput-input) {
+    color: c.$white;
+  }
+}

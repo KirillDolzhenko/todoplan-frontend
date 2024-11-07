@@ -1,0 +1,13 @@
+@use "@styles/vars/colors.scss" as c;
+
+.btn {
+  &:global(.MuiButton-root) {
+    color: c.$white;
+    border-color: c.$white;
+
+    &:hover {
+      color: c.$bg;
+      border-color: c.$bg;
+    }
+  }
+}

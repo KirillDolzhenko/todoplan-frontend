@@ -1,0 +1,10 @@
+@use "@styles/vars/colors.scss" as c;
+
+.heading {
+  color: c.$white;
+
+  text-transform: uppercase;
+  letter-spacing: 1rem;
+  font-size: 5rem;
+  font-weight: 700;
+}
