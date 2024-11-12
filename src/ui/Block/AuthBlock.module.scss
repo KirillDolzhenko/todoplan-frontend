@@ -1,3 +1,47 @@
+@keyframes logoMoving {
+  0% {
+    padding: 10px 5px 0px 10px;
+  }
+
+  25% {
+    padding: 0px 10px 10px 0px;
+  }
+
+  70% {
+    padding: 5px 0px 5px 5px;
+  }
+
+  80% {
+    padding: 0px 0px 0px 00px;
+  }
+
+  100% {
+    padding: 10px 5px 0px 10px;
+  }
+}
+
+@keyframes logoPulsing {
+  0% {
+    opacity: 0.5;
+  }
+
+  25% {
+    opacity: 0.3;
+  }
+
+  70% {
+    opacity: 0.6;
+  }
+
+  80% {
+    opacity: 0.2;
+  }
+
+  100% {
+    opacity: 0.5;
+  }
+}
+
 .block {
   position: relative;
   width: 100%;
@@ -37,11 +81,11 @@
 
     transition: all 0.4s ease-in-out;
 
-    &:first-child {
+    &.block__login {
       transform: translateX(0%);
     }
 
-    &:last-child {
+    &.block__signup {
       transform: translateX(10%);
     }
   }
@@ -52,11 +96,81 @@
     }
 
     & .block__item {
-      &:first-child {
+      position: relative;
+      z-index: 10;
+      &.block__login {
         transform: translateX(-10%);
       }
-      &:last-child {
+      &.block__signup {
         transform: translateX(0%);
+      }
+    }
+
+    & .block__icon {
+      // left: 10%;
+      right: 70%;
+    }
+  }
+
+  &__icon {
+    transition: all 0.5s ease;
+
+    position: absolute;
+    right: 10%;
+
+    animation: infinite ease-in-out 4s logoMoving;
+
+    top: 50%;
+    transform: translateY(-50%);
+
+    &:hover {
+      animation-play-state: paused;
+    }
+    svg {
+      animation: infinite ease-in-out 4s logoPulsing;
+      height: 300px;
+      width: 300px;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .block {
+    &__container {
+      clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    }
+
+    &__icon {
+      display: none;
+    }
+
+    &__item {
+      flex: 1 0 100%;
+      overflow: hidden;
+
+      transition: all 0.4s ease-in-out;
+
+      &.block__login {
+        transform: translateX(0%);
+      }
+
+      &.block__signup {
+        transform: translateX(0%);
+      }
+    }
+
+    &.active {
+      & .block__container {
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+      }
+
+      & .block__item {
+        &.block__login {
+          transform: translateX(-100%);
+        }
+        &.block__signup {
+          transform: translateX(-100%);
+        }
       }
     }
   }

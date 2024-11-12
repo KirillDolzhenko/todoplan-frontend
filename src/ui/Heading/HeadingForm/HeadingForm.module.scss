@@ -8,3 +8,9 @@
   font-size: 5rem;
   font-weight: 700;
 }
+
+@media (max-width: 480px) {
+  .heading {
+    font-size: 4rem;
+  }
+}

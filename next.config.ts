@@ -1,9 +1,18 @@
+/**
+ * @type {import('next').NextConfig}
+ */
+
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  turbo: {
-    resolveAlias: {
-      "@styles": "./src/styles/",
+  sassOptions: {
+    silenceDeprecations: ["legacy-js-api"],
+  },
+  experimental: {
+    turbo: {
+      resolveAlias: {
+        "@styles": "./src/styles/",
+      },
     },
   },
 };
