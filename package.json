@@ -16,6 +16,8 @@
     "@emotion/styled": "^11.13.0",
     "@hookform/resolvers": "^3.9.1",
     "@mui/material": "^6.1.6",
+    "@next/env": "^15.0.3",
+    "@reduxjs/toolkit": "^2.3.0",
     "clsx": "^2.1.1",
     "dotenv-cli": "^7.4.2",
     "json-server": "^1.0.0-beta.3",
@@ -23,7 +25,8 @@
     "next-sass": "^1.0.3",
     "react": "19.0.0-rc-02c0e824-20241028",
     "react-dom": "19.0.0-rc-02c0e824-20241028",
-    "react-hook-form": "^7.53.1",
+    "react-hook-form": "^7.53.2",
+    "react-redux": "^9.1.2",
     "sass": "^1.80.6",
     "zod": "^3.23.8"
   },

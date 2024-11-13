@@ -7,10 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  return (
-    <div>
-      {/* <LogIn></LogIn> */}
-      MainPage
-    </div>
-  );
+  return <div>MainPage</div>;
 }

@@ -1,0 +1,14 @@
+@use "@styles/vars/colors.scss" as c;
+
+.alert {
+  &.error {
+    &:global(.MuiPaper-root) {
+      color: c.$white;
+      background-color: rgba($color: red, $alpha: 0.1);
+
+      & :global(.MuiSvgIcon-root) {
+        fill: c.$white;
+      }
+    }
+  }
+}

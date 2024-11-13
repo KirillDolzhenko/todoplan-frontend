@@ -11,7 +11,6 @@ export const metadata: Metadata = {
 };
 
 export default async function Home({ searchParams }: IParamsAuth) {
-  console.log((await searchParams).active);
   return (
     <div>
       <AuthBlock />
