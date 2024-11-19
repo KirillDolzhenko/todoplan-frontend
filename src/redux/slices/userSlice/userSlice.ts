@@ -1,13 +1,7 @@
 import { IUser, IUserSlice } from "@/types/slices.types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-const initialState: IUserSlice = {
-  user: {
-    id: "s",
-    username: "ff34343",
-    email: "F",
-  },
-};
+const initialState: IUserSlice = {};
 
 export const userSlice = createSlice({
   name: "userSlice",

@@ -5,11 +5,15 @@ import clsx from "clsx";
 import Alert from "@mui/material/Alert";
 import { useEffect } from "react";
 
-export default function ({ placeholder, error, ...args }: IPropsInputForm) {
+// import TextField from "@mui/material/TextField";
+
+
+export default function ({ placeholder, error, type, ...args }: IPropsInputForm) {
   return (
     <div>
       <Input
         error={Boolean(error)}
+        type={type}
         className={clsx(classes.input, error ? classes.error : "")}
         placeholder={placeholder}
         {...args}

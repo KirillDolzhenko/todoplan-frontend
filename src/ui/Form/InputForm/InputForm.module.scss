@@ -17,6 +17,11 @@
   }
 
   & :global(.MuiInput-input) {
+    &[type="password"] {
+      &:not(:placeholder-shown) {
+        letter-spacing: 0.2rem;
+      }
+    }
     color: c.$white;
   }
 }

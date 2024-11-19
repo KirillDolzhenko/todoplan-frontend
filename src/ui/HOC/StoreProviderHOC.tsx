@@ -1,3 +1,5 @@
+"use client";
+
 import { AppStore, makeStore } from "@/redux/store";
 import { IPropsChildren } from "@/types/props.types";
 import React, { useRef } from "react";

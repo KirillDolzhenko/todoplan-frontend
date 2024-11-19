@@ -5,21 +5,23 @@ import InputForm from "@/ui/Form/InputForm/InputForm";
 import ButtonForm from "@/ui/Form/ButtonForm/ButtonForm";
 import HeadingForm from "@/ui/Heading/HeadingForm/HeadingForm";
 import clsx from "clsx";
-import { IPropsButton, IPropsClassName, IPropsForm } from "@/types/props.types";
-import { useAppSelector } from "@/redux/hooks";
+import { IPropsForm } from "@/types/props.types";
+import { useAppDispatch } from "@/redux/hooks";
 import { useForm } from "react-hook-form";
 import {
   loginSchema,
   loginType,
 } from "@/app/assets/validation/login.validation";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import ErrorMessage from "@/ui/Message/AlertMessage/ErrorMessage";
 import { useLoginMutation } from "@/redux/query/auth.query";
-import { IQueryLogin } from "@/types/query.types";
+import { setUser } from "@/redux/slices/userSlice/userSlice";
+import { RTKErrorMessage } from "@/app/assets/redux/queryError";
+import { IMLogin } from "@/types/redux/query.types";
 
 export default function ({ className, onClick }: IPropsForm) {
-  let {
+  const {
     handleSubmit,
     register,
     formState: { errors },
@@ -27,13 +29,24 @@ export default function ({ className, onClick }: IPropsForm) {
     resolver: zodResolver(loginSchema),
   });
 
-  let [login, { isLoading, isSuccess, isError }] = useLoginMutation();
+  const [login, { data, isLoading, isSuccess, isError, error }] =
+    useLoginMutation();
+  const dispatch = useAppDispatch();
 
-  let onSubmit = useCallback((data: IQueryLogin) => {
-    console.log("SOMETHIING");
+  const onSubmit = useCallback((data: IMLogin) => {
     console.log(data);
     login(data);
   }, []);
+
+  useEffect(() => {
+    if (data) {
+      dispatch(setUser(data));
+    }
+
+    if (isError) {
+      console.log(isError);
+    }
+  }, [data, isError, error]);
 
   return (
     <form
@@ -59,17 +72,20 @@ export default function ({ className, onClick }: IPropsForm) {
             console.log("FFF");
           }}
           type="submit"
+          loading={isLoading}
         >
           Login
         </ButtonForm>
-        <ButtonForm onClick={onClick}>Register</ButtonForm>
+        <ButtonForm onClick={onClick} disabled={isLoading}>
+          Register
+        </ButtonForm>
       </div>
       {errors.email ? (
         <ErrorMessage message={errors.email.message} />
       ) : errors.password ? (
         <ErrorMessage message={errors.password.message} />
       ) : isError ? (
-        <ErrorMessage message={"Server error"} />
+        <ErrorMessage message={RTKErrorMessage(error)} />
       ) : (
         <></>
       )}

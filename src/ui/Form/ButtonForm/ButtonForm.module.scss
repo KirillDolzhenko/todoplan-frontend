@@ -9,5 +9,17 @@
       color: c.$bg;
       border-color: c.$bg;
     }
+
+    &:global(.Mui-disabled) {
+      border-color: c.$white70;
+
+      &:not(:global(.MuiLoadingButton-loading)) {
+        color: c.$white70;
+      }
+    }
+
+    & :global(.MuiCircularProgress-root) {
+      color: c.$white70;
+    }
   }
 }
